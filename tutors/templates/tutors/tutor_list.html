@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">Find Tutors</h2>
+
+<form method="GET" class="input-group mb-4">
+    <input type="text" name="q" class="form-control" placeholder="Search subject or location">
+    <button class="btn btn-primary">Search</button>
+</form>
+
+<div class="row">
+    {% for tutor in tutors %}
+        <div class="col-md-4 mb-4">
+            <div class="card p-3 shadow-sm">
+                <h5>
+                    <a href="{% url 'tutor_detail' tutor.id %}">
+                        {{ tutor.user.username }}
+                    </a>
+                </h5>
+
+                <p><strong>Subject:</strong> {{ tutor.subject.name }}</p>
+                <p><strong>Location:</strong> {{ tutor.location }}</p>
+                <p><strong>₹{{ tutor.hourly_rate }}/hr</strong></p>
+            </div>
+        </div>
+    {% empty %}
+        <p>No tutors available</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

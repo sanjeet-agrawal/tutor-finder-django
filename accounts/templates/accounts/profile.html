@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+
+            <h3 class="text-center mb-3">My Profile</h3>
+
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+            <p><strong>Role:</strong> {{ profile.role }}</p>
+
+            <hr>
+
+            {% if tutor %}
+                <h5>Tutor Details</h5>
+                <p><strong>Subject:</strong> {{ tutor.subject }}</p>
+                <p><strong>Experience:</strong> {{ tutor.experience }} years</p>
+                <p><strong>Location:</strong> {{ tutor.location }}</p>
+                <p><strong>Hourly Rate:</strong> ₹{{ tutor.hourly_rate }}</p>
+                <p><strong>Bio:</strong> {{ tutor.bio }}</p>
+            {% endif %}
+
+            <hr>
+
+<a href="/accounts/edit-profile/" class="btn btn-primary w-100">
+    Edit Profile
+</a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

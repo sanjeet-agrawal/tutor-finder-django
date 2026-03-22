@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Bookings</h2>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Tutor</th>
+<th>Date</th>
+<th>Message</th>
+</tr>
+
+{% for booking in bookings %}
+
+<tr>
+<td>{{ booking.tutor.user.username }}</td>
+<td>{{ booking.date }}</td>
+<td>{{ booking.message }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

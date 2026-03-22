@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Bookings (Tutor)</h2>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% for booking in bookings %}
+    <div class="card p-3 mb-3">
+        <p><strong>Student:</strong> {{ booking.student.username }}</p>
+        <p><strong>Date:</strong> {{ booking.date }}</p>
+        <p><strong>Message:</strong> {{ booking.message }}</p>
+    </div>
+{% empty %}
+    <p>No bookings yet</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card p-4 shadow-sm">
+    <h3>{{ tutor.user.username }}</h3>
+
+    <p><strong>Subject:</strong> {{ tutor.subject.name }}</p>
+    <p><strong>Experience:</strong> {{ tutor.experience }} years</p>
+    <p><strong>Location:</strong> {{ tutor.location }}</p>
+    <p><strong>Rate:</strong> ₹{{ tutor.hourly_rate }}/hour</p>
+
+    <p><strong>About:</strong></p>
+    <p>{{ tutor.bio }}</p>
+
+    {% if tutor.photo %}
+        <img src="{{ tutor.photo.url }}" width="200" class="mt-3">
+    {% endif %}
+
+    {% if request.user != tutor.user %}
+    <a href="/bookings/book/{{ tutor.id }}/" class="btn btn-primary mt-3">
+        Book This Tutor
+    </a>
+{% else %}
+    <p class="text-danger mt-3">You cannot book yourself</p>
+{% endif %}
+</div>
+
+{% endblock %}
